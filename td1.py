@@ -26,13 +26,23 @@ def simulation(n) :
     pluvieux = np.array([0, 0, 1])   
 
     resultat_simulation = ""
+    txt_etat = ""
     puissance = transition
-    passage = np.dot(initial, puissance)
+    stockage = np.dot(initial, puissance)
 
-    for i in range(2, n+1):
-        if (i==1) :
-            stockage = np.dot(initial, puissance)
-        else :
-            puissance = np.dot(transition, puissance)
-            stockage = np.dot(initial, puissance)
+    hazard = np.random.choice(stockage)
+
+    if (hazard == stockage[0]) :
+        txt_etat = "ensoleille"
+    
+    if (hazard == stockage[1]) :
+        txt_etat = "nuageux"
+    
+    if (hazard == stockage[2]) :
+        txt_etat = "pluvieux"
+    
+    resultat_simulation = resultat_simulation + txt_etat + " "
+    print(resultat_simulation)
         
+
+simulation(1)
