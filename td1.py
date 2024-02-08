@@ -27,22 +27,29 @@ def simulation(n) :
 
     resultat_simulation = ""
     txt_etat = ""
-    puissance = transition
-    stockage = np.dot(initial, puissance)
 
-    hazard = np.random.choice(stockage)
+    for i in range(1, n+1):
+        puissance = np.linalg.matrix_power(transition, i)
+        stockage = np.dot(initial, puissance)
 
-    if (hazard == stockage[0]) :
-        txt_etat = "ensoleille"
+        hazard = np.random.choice(stockage, p=stockage)
     
-    if (hazard == stockage[1]) :
-        txt_etat = "nuageux"
-    
-    if (hazard == stockage[2]) :
-        txt_etat = "pluvieux"
-    
-    resultat_simulation = resultat_simulation + txt_etat + " "
+        while (hazard == 0) :
+            hazard = np.random.choice(stockage)
+
+        if (hazard == stockage[0]) :
+            txt_etat = "ensoleille"
+        
+        if (hazard == stockage[1]) :
+            txt_etat = "nuageux"
+        
+        if (hazard == stockage[2]) :
+            txt_etat = "pluvieux"
+        
+        resultat_simulation = resultat_simulation + txt_etat + " "
+
+    print("\n")
     print(resultat_simulation)
         
 
-simulation(1)
+simulation(5)
