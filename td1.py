@@ -30,12 +30,9 @@ def simulation(n) :
 
     for i in range(1, n+1):
         puissance = np.linalg.matrix_power(transition, i)
-        stockage = np.dot(initial, puissance)
+        stockage = np.dot(pluvieux, puissance)
 
         hazard = np.random.choice(stockage, p=stockage)
-    
-        while (hazard == 0) :
-            hazard = np.random.choice(stockage)
 
         if (hazard == stockage[0]) :
             txt_etat = "ensoleille"
