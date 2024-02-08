@@ -20,4 +20,19 @@ print("\nLa probabilité qu'il fasse ensolleillé dans deux jours est de : ", pr
 print("La probabilité qu'il fasse nuageux dans deux jours est de : {proba_nuageux:.2f}".format(proba_nuageux = proba_etat_2[1]))
 print("La probabilité qu'il fasse pluvieux dans deux jours est de : ", proba_etat_2[2])
 
-# Proba des états dans 
+
+# Simulation temporelle
+def simulation(n) :
+    pluvieux = np.array([0, 0, 1])   
+
+    resultat_simulation = ""
+    puissance = transition
+    passage = np.dot(initial, puissance)
+
+    for i in range(2, n+1):
+        if (i==1) :
+            stockage = np.dot(initial, puissance)
+        else :
+            puissance = np.dot(transition, puissance)
+            stockage = np.dot(initial, puissance)
+        
