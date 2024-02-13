@@ -6,9 +6,6 @@ transition = np.array([[0.7, 0.2, 0.1], [0.5, 0.3, 0.2], [0.4, 0.3, 0.3]])
 # Etat initial ensoleillé
 initial = np.array([1, 0, 0])
 
-print("\n La matrice de transition est : \n", transition)
-print("\n Le vecteur initial est : \n", initial)
-
 # Matrice de transition dans 2 jours
 dans_deux_jours = np.dot(transition, transition)
 
@@ -16,9 +13,18 @@ dans_deux_jours = np.dot(transition, transition)
 # Proba des états dans deux jours avec la formule : initial * dans_deux_jours
 proba_etat_2 = np.dot(initial, dans_deux_jours)
 
-print("\nLa probabilité qu'il fasse ensolleillé dans deux jours est de : ", proba_etat_2[0])
-print("La probabilité qu'il fasse nuageux dans deux jours est de : {proba_nuageux:.2f}".format(proba_nuageux = proba_etat_2[1]))
-print("La probabilité qu'il fasse pluvieux dans deux jours est de : ", proba_etat_2[2])
+def affiche(n) :
+    if (n==1) :
+        print("\n La matrice de transition est : \n", transition)
+        print("\n Le vecteur initial est : \n", initial)
+        
+        print("\nLa probabilité qu'il fasse ensolleillé dans deux jours est de : ", proba_etat_2[0])
+        print("La probabilité qu'il fasse nuageux dans deux jours est de : {proba_nuageux:.2f}".format(proba_nuageux = proba_etat_2[1]))
+        print("La probabilité qu'il fasse pluvieux dans deux jours est de : ", proba_etat_2[2])
+    else :
+        return 0
+    
+
 
 
 # Simulation temporelle
@@ -48,5 +54,5 @@ def simulation(n) :
     print("\n")
     print(resultat_simulation)
         
-
+affiche(0)
 simulation(5)
